@@ -14,30 +14,53 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+
+div#links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div#links p {
+    padding: 20px;
+}
+
+div#links p > a {
+    display: inline-flex;
+    flex-direction: column;
+}
 </style>
 </head>
 <body>
 	<h1>OrrLoco team website</h1>
 	<h2>Useful links</h2>
-	<p>
-	<a href="https://is.tmatex.com/">
-		<img src="ice_time.jpg" width=300 height=197 alt=:a thumbnail of the ice time website" />
-			  Ice times
-	</a>
-	</p>
-	<p>
-	<a href="https://gamesheetstats.com/seasons/14481/teams/495695/schedule">
-		<img src="gamesheet.jpg" width=300 height=221 alt="a thumbnail of the gamesheet website" />
-		Gamesheet
-	</a>
-	</p>
+	<div id="links">
+		<p>
+		<a href="https://is.tmatex.com/">
+			<img src="ice_time.jpg" width=300 height=197 alt=:a thumbnail of the ice time website" />
+				  Ice times
+		</a>
+		</p>
+		<p>
+		<a href="https://gamesheetstats.com/seasons/14481/teams/495695/schedule">
+			<img src="gamesheet.jpg" width=300 height=221 alt="a thumbnail of the gamesheet website" />
+			Gamesheet
+		</a>
+		</p>
 
-	<p>
-	<a href="https://apps.daysmartrecreation.com/dash/x/#/online/ashburn/teams/4744">
-		<img src="dash.jpg" width=300 height=221 alt="a thumbnail of the dash website" />
-		Dash
-	</a>
-	</p>
+		<p>
+		<a href="https://apps.daysmartrecreation.com/dash/x/#/online/ashburn/teams/4744">
+			<img src="dash.jpg" width=300 height=221 alt="a thumbnail of the dash website" />
+			Dash
+		</a>
+		</p>
+
+		<p>
+		<a href="https://member.daysmartrecreation.com/#/online/ashburn/event-registration?&facility_ids=1&sport_ids=30">
+			<img src="drop_in_activities.jpg" width=300 height=214 alt="a thumbnail of the dash website" />
+			Ashburn drop-in hockey activities for today
+		</a>
+		</p>
+	</div>
 
 	<h2>Pictures</h2>
 
