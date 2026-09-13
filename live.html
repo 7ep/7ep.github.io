@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GameSheet &middot; OrrLoco Hockey</title>
+	<meta charset="utf-8">
+	<meta name="description" content="Live schedule, standings and roster for OrrLoco hockey, straight from GameSheet.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#0b1017">
+	<link rel="canonical" href="https://www.orrloco.org/live.html">
+	<link rel="icon" href="favicon.png">
+
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="OrrLoco Hockey">
+	<meta property="og:title" content="GameSheet &middot; OrrLoco Hockey">
+	<meta property="og:description" content="Live schedule, standings and roster for OrrLoco hockey, straight from GameSheet.">
+	<meta property="og:url" content="https://www.orrloco.org/live.html">
+	<meta property="og:image" content="https://www.orrloco.org/2025-2026_team.jpg">
+	<meta property="og:image:width" content="1041">
+	<meta property="og:image:height" content="586">
+	<meta property="og:image:alt" content="The OrrLoco hockey team at Ashburn Ice House">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="stylesheet" href="site.css">
+</head>
+<body data-page="live">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+	<a class="brand" href="index.html">Orr<span>LoCo</span></a>
+	<div class="nav-links" id="nav-links">
+			<a href="index.html">Home</a>
+			<a href="live.html">GameSheet</a>
+			<a href="photos.html">Photos</a>
+	</div>
+</nav>
+
+<main id="main">
+	<header class="page-head">
+		<h1>GameSheet</h1>
+		<p class="page-sub">Schedule, standings and roster, live from GameSheet.</p>
+	</header>
+
+	<section class="section">
+		<div class="chips" id="live-tabs" aria-label="GameSheet views"></div>
+		<div class="card live-card">
+			<div class="live-bar">
+				<span id="live-caption">Loading&hellip;</span>
+				<a id="live-open" href="https://gamesheetstats.com/" target="_blank" rel="noopener">Open on GameSheet &#8599;</a>
+			</div>
+			<div class="live-frame" id="live-frame"></div>
+		</div>
+		<p class="fineprint">This page shows GameSheet itself, so it is always current and never needs updating.
+			If the panel stays blank, GameSheet&rsquo;s security check could not run inside another site &mdash;
+			the Open on GameSheet link always works.</p>
+	</section>
+</main>
+
+<footer>
+	<p>OrrLoco &middot; Ashburn Ice House Adult League</p>
+	<p class="fineprint">Schedule from <a data-dash-team href="https://apps.daysmartrecreation.com/dash/x/#/online/ashburn">DaySmart</a>,
+		scores and standings from <a data-gs-team href="https://gamesheetstats.com/">GameSheet</a>.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -3,75 +3,98 @@
 <head>
 	<title>OrrLoco Hockey</title>
 	<meta charset="utf-8">
-	<meta name="description" content="A website for the OrrLoco hockey team in Ashburn, Virginia" >
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="main.css">
-<style>
-body {
-    background-image: url("bobby_orr_flying_goal.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-}
+	<meta name="description" content="Schedule, standings and photos for the OrrLoco hockey team in Ashburn, Virginia.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#0b1017">
+	<link rel="canonical" href="https://www.orrloco.org/">
+	<link rel="icon" href="favicon.png">
 
-div#links {
-    display: flex;
-    flex-wrap: wrap;
-}
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="OrrLoco Hockey">
+	<meta property="og:title" content="OrrLoco Hockey">
+	<meta property="og:description" content="Schedule, standings and photos for the OrrLoco hockey team in Ashburn, Virginia.">
+	<meta property="og:url" content="https://www.orrloco.org/">
+	<meta property="og:image" content="https://www.orrloco.org/2025-2026_team.jpg">
+	<meta property="og:image:width" content="1041">
+	<meta property="og:image:height" content="586">
+	<meta property="og:image:alt" content="The OrrLoco hockey team at Ashburn Ice House">
+	<meta name="twitter:card" content="summary_large_image">
 
-div#links p {
-    padding: 20px;
-}
-
-div#links p > a {
-    display: inline-flex;
-    flex-direction: column;
-}
-</style>
+	<link rel="stylesheet" href="site.css">
 </head>
-<body>
-	<h1>OrrLoco team website</h1>
-	<h2>Useful links</h2>
-	<div id="links">
-		<p>
-		<a href="https://is.tmatex.com/">
-			<img src="ice_time.jpg" width=300 height=197 alt=:a thumbnail of the ice time website" />
-				  Ice times
-		</a>
-		</p>
-		<p>
-		<a href="https://gamesheetstats.com/seasons/14481/teams/495695/schedule">
-			<img src="gamesheet.jpg" width=300 height=221 alt="a thumbnail of the gamesheet website" />
-			Gamesheet
-		</a>
-		</p>
+<body data-page="home">
 
-		<p>
-		<a href="https://apps.daysmartrecreation.com/dash/x/#/online/ashburn/teams/4744">
-			<img src="dash.jpg" width=300 height=221 alt="a thumbnail of the dash website" />
-			Dash
-		</a>
-		</p>
+<a class="skip" href="#main">Skip to content</a>
 
-		<p>
-		<a href="https://member.daysmartrecreation.com/#/online/ashburn/event-registration?&facility_ids=1&sport_ids=30">
-			<img src="drop_in_activities.jpg" width=300 height=214 alt="a thumbnail of the dash website" />
-			Ashburn drop-in hockey activities for today
-		</a>
-		</p>
+<nav class="nav">
+	<a class="brand" href="index.html">Orr<span>LoCo</span></a>
+	<div class="nav-links" id="nav-links">
+			<a href="index.html">Home</a>
+			<a href="live.html">GameSheet</a>
+			<a href="photos.html">Photos</a>
 	</div>
+</nav>
 
-	<h2>Pictures</h2>
+<header class="hero">
+	<div class="hero-inner">
+		<p class="kicker">Ashburn Ice House Adult League</p>
+		<h1>Orr<span>LoCo</span></h1>
+		<p class="tagline">Ashburn, Virginia</p>
+	</div>
+</header>
 
-	<p><img src="2025-2026_team.jpg" width=1041 height=586 alt="a team photo of OrrLoco hockey at the end of the 2025-2026 season, at the Slice Theory pizza place in Ashburn Ice House" /></p>
-	<p><img src="2023_champs.jpg" width=1041 height=781 alt="a team photo of OrrLoco as the 2023 D-league hockey champions" /></p>
-	<p><img src="2022_champs.jpg" width=1041 height=781 alt="a team photo of OrrLoco as the 2022 D-league hockey champions" /></p>
-	<p><img src="2020_champs.jpg" width=1041 height=665 alt="a team photo of OrrLoco as the 2020 D-league hockey champions" /></p>
-	<p><img src="2019_champs.jpg" width=1041 height=865 alt="a team photo of OrrLoco as the 2019 D-league hockey champions" /></p>
+<main id="main">
 
-	<h2>Videos</h2>
-	
-	<a href="https://www.youtube.com/@OrrLocoGames-xp1fu"><img src="orrlocogames.jpg" width=400 height=220 /></a>
+	<section class="section">
+		<h2 class="section-title">Next game</h2>
+		<div id="next-game" class="card game-card">
+			<p class="loading">Loading the schedule&hellip;</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<h2 class="section-title">Coming up</h2>
+		<div id="upcoming" class="card">
+			<p class="loading">Loading&hellip;</p>
+		</div>
+		<p class="fineprint">Pulled live from the rink&rsquo;s booking system every time this page opens, so it never needs updating.
+			Scores, standings and the roster are on the <a href="live.html">GameSheet</a> page.</p>
+	</section>
+
+	<section class="section">
+		<h2 class="section-title">Useful links</h2>
+		<div class="links">
+			<a class="link-card" href="https://is.tmatex.com/">
+				<img src="ice_time.jpg" width="300" height="197" alt="a thumbnail of the ice time website" loading="lazy">
+				<span>Ice times</span>
+			</a>
+			<a class="link-card" data-gs-team href="https://gamesheetstats.com/">
+				<img src="gamesheet.jpg" width="300" height="221" alt="a thumbnail of the gamesheet website" loading="lazy">
+				<span>Gamesheet</span>
+			</a>
+			<a class="link-card" data-dash-team href="https://apps.daysmartrecreation.com/dash/x/#/online/ashburn">
+				<img src="dash.jpg" width="300" height="221" alt="a thumbnail of the dash website" loading="lazy">
+				<span>Dash</span>
+			</a>
+			<a class="link-card" href="https://member.daysmartrecreation.com/#/online/ashburn/event-registration?&amp;facility_ids=1&amp;sport_ids=30">
+				<img src="drop_in_activities.jpg" width="300" height="214" alt="a thumbnail of the drop-in activities website" loading="lazy">
+				<span>Ashburn drop-in hockey today</span>
+			</a>
+			<a class="link-card" href="https://www.youtube.com/@OrrLocoGames-xp1fu">
+				<img src="orrlocogames.jpg" width="400" height="220" alt="a thumbnail of the OrrLoco Games YouTube channel" loading="lazy">
+				<span>OrrLoco Games on YouTube</span>
+			</a>
+		</div>
+	</section>
+
+</main>
+
+<footer>
+	<p>OrrLoco &middot; Ashburn Ice House Adult League</p>
+	<p class="fineprint">Schedule from <a data-dash-team href="https://apps.daysmartrecreation.com/dash/x/#/online/ashburn">DaySmart</a>,
+		scores and standings from <a data-gs-team href="https://gamesheetstats.com/">GameSheet</a>.</p>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
