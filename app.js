@@ -54,13 +54,12 @@
 		return d.toLocaleString("en-US", opts);
 	}
 
-	function table(headers, rows) {
-		return '<div class="table-wrap"><table><thead><tr>' +
-			headers.map(function (h) {
-				var label = typeof h === "string" ? h : h.label;
-				var cls = typeof h === "string" ? "" : ' class="' + h.cls + '"';
-				return '<th scope="col"' + cls + ">" + label + "</th>";
-			}).join("") + "</tr></thead><tbody>" + rows.join("") + "</tbody></table></div>";
+	function fmtDay(d) {
+		return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: TZ });
+	}
+
+	function fmtTime(d) {
+		return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZoneName: "short", timeZone: TZ });
 	}
 
 	/* ---------- DaySmart schedule ---------- */
@@ -181,14 +180,18 @@
 			tick(g.when);
 			setInterval(function () { tick(g.when); }, 1000);
 
+			// A list, not a table: day and time stack in a narrow column, so every game fits
+			// a phone screen instead of pushing the opponent off the right-hand edge.
 			var rest = ahead.slice(1, 1 + UPCOMING_SHOWN);
 			list.innerHTML = rest.length
-				? table(["Date", "", { label: "Opponent", cls: "wide" }, "Rink"], rest.map(function (x) {
-					return "<tr><td>" + esc(fmtDate(x.when, true)) + "</td>" +
-						'<td class="tag">' + (x.home ? "vs" : "@") + "</td>" +
-						'<td class="wide">' + esc(x.opponent) + "</td>" +
-						'<td class="tag">' + esc(x.rink) + "</td></tr>";
-				}))
+				? '<ul class="fixtures">' + rest.map(function (x) {
+					return "<li>" +
+						'<div class="when"><span class="day">' + esc(fmtDay(x.when)) + "</span>" +
+						'<span class="time">' + esc(fmtTime(x.when)) + "</span></div>" +
+						'<div class="what"><span class="opp"><span class="ha">' + (x.home ? "vs" : "at") + "</span> " +
+						esc(x.opponent) + "</span>" +
+						'<span class="where">' + esc(x.rink) + "</span></div></li>";
+				}).join("") + "</ul>"
 				: '<p class="loading">No other games posted yet &mdash; they appear here as soon as the rink posts them.</p>';
 		}).catch(function () {
 			next.innerHTML = '<p class="loading">Could not reach the rink&rsquo;s schedule just now. ' +
@@ -249,9 +252,15 @@
 
 	/* ---------- boot ---------- */
 
-	var here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+	/* "/", "/index.html", "index.html" and an address typed without ".html" all name the
+	   same page, so the right tab lights up however the address was written. */
+	function pageName(path) {
+		return (path.split("/").pop() || "index").toLowerCase().replace(/\.html$/, "") || "index";
+	}
+
+	var here = pageName(location.pathname);
 	$$(".nav-links a").forEach(function (a) {
-		if (a.getAttribute("href").toLowerCase() === here) {
+		if (pageName(a.getAttribute("href")) === here) {
 			a.classList.add("active");
 			a.setAttribute("aria-current", "page");
 		}

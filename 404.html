@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- Paths start at the site root: GitHub serves this page at whatever missing address
+	     was asked for, so a relative "site.css" would break for /some/folder/missing. -->
 	<title>Not found &middot; OrrLoco Hockey</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0b1017">
-	<link rel="icon" href="favicon.png">
-	<link rel="stylesheet" href="site.css">
+	<link rel="icon" href="/favicon.png">
+	<link rel="stylesheet" href="/site.css">
 </head>
 <body data-page="404">
 
 <a class="skip" href="#main">Skip to content</a>
 
 <nav class="nav">
-	<a class="brand" href="index.html">Orr<span>LoCo</span></a>
+	<a class="brand" href="/">Orr<span>LoCo</span></a>
 	<div class="nav-links" id="nav-links">
-			<a href="index.html">Home</a>
-			<a href="live.html">GameSheet</a>
-			<a href="photos.html">Photos</a>
+			<a href="/">Home</a>
+			<a href="/live.html">GameSheet</a>
+			<a href="/photos.html">Photos</a>
 	</div>
 </nav>
 
@@ -29,7 +31,7 @@
 
 	<section class="section">
 		<div class="card">
-			<p><a class="btn-link" href="index.html">Back to the home page</a></p>
+			<p><a class="btn-link" href="/">Back to the home page</a></p>
 		</div>
 	</section>
 </main>
@@ -38,6 +40,6 @@
 	<p>OrrLoco &middot; Ashburn Ice House Adult League</p>
 </footer>
 
-<script src="app.js"></script>
+<script src="/app.js"></script>
 </body>
 </html>

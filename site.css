@@ -6,12 +6,9 @@
 	--ink: #e8edf4;
 	--muted: #93a1b3;
 	--gold: #f5b301;
-	--win: #35c48a;
-	--loss: #e2564a;
 	--radius: 14px;
 	--wrap: 1100px;
 	--sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	--mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -33,7 +30,7 @@ a { color: var(--gold); }
 	border-radius: 4px;
 }
 
-h1, h2, h3 { line-height: 1.15; margin: 0; }
+h1, h2 { line-height: 1.15; margin: 0; }
 
 /* ---------- hero ---------- */
 
@@ -73,30 +70,6 @@ h1, h2, h3 { line-height: 1.15; margin: 0; }
 	margin: .5rem 0 0;
 	color: var(--muted);
 	letter-spacing: .04em;
-}
-
-.hero-stats {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: clamp(1rem, 5vw, 3rem);
-	margin: 2rem 0 0;
-}
-
-.hero-stats > div { min-width: 4.5rem; }
-
-.hero-stats dt {
-	font-size: .68rem;
-	letter-spacing: .14em;
-	text-transform: uppercase;
-	color: var(--muted);
-}
-
-.hero-stats dd {
-	margin: .15rem 0 0;
-	font-size: clamp(1.35rem, 4vw, 1.9rem);
-	font-weight: 700;
-	font-variant-numeric: tabular-nums;
 }
 
 /* ---------- site nav ---------- */
@@ -205,9 +178,6 @@ main {
    gap that separates one section from the next. */
 main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
 
-/* When the staleness banner appears it supplies its own spacing above the section. */
-#stale-slot:has(.stale) + section { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
-
 .section-title {
 	font-size: .8rem;
 	letter-spacing: .18em;
@@ -227,42 +197,7 @@ main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
 
 .card + .card { margin-top: 1rem; }
 
-.card h3 {
-	font-size: 1rem;
-	margin-bottom: .9rem;
-	letter-spacing: -.01em;
-}
-
-.split {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	align-items: start;
-	gap: 1rem;
-	margin-top: 1rem;
-}
-
-.split > .card + .card { margin-top: 0; }
-
-/* Grid items default to min-width:auto, so a wide table would force the whole
-   column past the viewport instead of scrolling inside its own .table-wrap. */
-.split > *, .stack > * { min-width: 0; }
-
-/* Goaltending is one or two rows; stacking it above the standings keeps it from
-   leaving a tall empty card beside the much longer scoring table. */
-.stack { display: grid; align-content: start; gap: 1rem; }
-.stack .card + .card { margin-top: 0; }
-
 .loading { color: var(--muted); margin: 0; }
-
-.stale {
-	margin: 1.5rem 0 0;
-	padding: .8rem 1rem;
-	border: 1px solid rgba(245, 179, 1, .4);
-	background: rgba(245, 179, 1, .1);
-	border-radius: 12px;
-	font-size: .88rem;
-	color: var(--ink);
-}
 
 .fineprint {
 	font-size: .75rem;
@@ -289,8 +224,6 @@ main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
 }
 
 .badge.gold { background: rgba(245, 179, 1, .12); border-color: rgba(245, 179, 1, .4); color: var(--gold); }
-.badge.win { background: rgba(53, 196, 138, .12); border-color: rgba(53, 196, 138, .4); color: var(--win); }
-.badge.loss { background: rgba(226, 86, 74, .12); border-color: rgba(226, 86, 74, .4); color: var(--loss); }
 
 .matchup {
 	display: flex;
@@ -313,13 +246,6 @@ main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
 	letter-spacing: .12em;
 	color: var(--muted);
 	text-transform: uppercase;
-}
-
-.matchup .score {
-	font-size: clamp(2rem, 8vw, 3rem);
-	font-weight: 800;
-	font-variant-numeric: tabular-nums;
-	letter-spacing: -.02em;
 }
 
 .game-meta { color: var(--muted); margin: .3rem 0 0; font-size: .95rem; }
@@ -364,24 +290,6 @@ main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
 	border-bottom: 1px solid currentColor;
 }
 
-/* A team name that opens its scouting report. Reads as text in the table, behaves
-   as the button it is. */
-.linky {
-	appearance: none;
-	background: none;
-	border: 0;
-	padding: 0;
-	font: inherit;
-	color: inherit;
-	cursor: pointer;
-	text-align: left;
-	border-bottom: 1px solid var(--line);
-}
-
-.linky:hover { color: var(--gold); border-bottom-color: currentColor; }
-
-.btn-link.linky { border-bottom: 0; color: var(--gold); }
-
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
 
 .chip {
@@ -401,153 +309,27 @@ main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
 
 .chip.on { background: var(--gold); border-color: var(--gold); color: var(--bg); }
 
-.card h4 {
-	margin: 1.4rem 0 .7rem;
-	font-size: .8rem;
-	letter-spacing: .14em;
-	text-transform: uppercase;
-	color: var(--muted);
-}
+/* ---------- coming up ---------- */
 
-.tag.gold { color: var(--gold); }
+/* A list rather than a table: day and time stack in a narrow column, so each row
+   fits a phone screen instead of scrolling sideways. */
+.fixtures { list-style: none; margin: 0; padding: 0; }
 
-.recap {
+.fixtures li {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: .5rem;
-	margin: 1.3rem 0 0;
-	padding-top: 1.2rem;
-	border-top: 1px solid var(--line);
-}
-
-.goal {
-	background: var(--panel-2);
-	border: 1px solid var(--line);
-	border-radius: 999px;
-	padding: .3rem .85rem;
-	font-size: .85rem;
-}
-
-.goal .num { color: var(--muted); font-variant-numeric: tabular-nums; }
-.goal.gwg { border-color: rgba(245, 179, 1, .5); background: rgba(245, 179, 1, .1); }
-
-/* ---------- scouting ---------- */
-
-.scout-head {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
 	gap: 1rem;
-	flex-wrap: wrap;
-	margin-bottom: 1.1rem;
-}
-
-.scout-head h3 { font-size: clamp(1.3rem, 4vw, 1.8rem); }
-
-.keys { margin: 0; padding-left: 1.1rem; color: var(--ink); }
-.keys li { margin: .4rem 0; }
-.keys li::marker { color: var(--gold); }
-
-/* ---------- stats ---------- */
-
-.stat-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-	gap: .75rem;
-}
-
-/* A two-line label would otherwise push its number below the others in the row,
-   so the tiles are columns with the value pinned to the bottom. */
-.stat-grid > div {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	gap: .2rem;
-	background: var(--panel);
-	border: 1px solid var(--line);
-	border-radius: 12px;
-	padding: .9rem 1rem;
-}
-
-.stat-grid .lbl {
-	font-size: .66rem;
-	letter-spacing: .13em;
-	text-transform: uppercase;
-	color: var(--muted);
-}
-
-.stat-grid .val {
-	font-size: 1.7rem;
-	font-weight: 700;
-	font-variant-numeric: tabular-nums;
-	line-height: 1.2;
-}
-
-/* A row of tiles runs flush into whatever comes next, because neither the card
-   below it nor a bare heading carries a top margin of its own. The tiles are also
-   wrapped in a plain div, so `.card + .card` never matches them. */
-#results-summary + .card { margin-top: 1rem; }
-
-/* Headings carry no top margin by default, so one that follows a block of content
-   inside a card ends up crowding it. These are the blocks a heading can follow. */
-.stat-grid + h3,
-.keys + h3,
-.table-wrap + h3,
-.recap + h3 { margin-top: 1.4rem; }
-
-.table-wrap { overflow-x: auto; }
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-	font-size: .9rem;
-	font-variant-numeric: tabular-nums;
-}
-
-th, td {
-	padding: .5rem .55rem;
-	text-align: right;
-	border-bottom: 1px solid var(--line);
-	white-space: nowrap;
-}
-
-th {
-	font-size: .66rem;
-	letter-spacing: .1em;
-	text-transform: uppercase;
-	color: var(--muted);
-	font-weight: 600;
-}
-
-/* Numbers read best right-aligned, but the first column is a label (date, rank,
-   period) so it stays left. The one text column that should absorb the leftover
-   width is marked .wide by the renderer — keying this off a column index breaks
-   the moment a table has a different shape. */
-th:first-child, td:first-child { text-align: left; }
-th.wide, td.wide { text-align: left; width: 99%; min-width: 8.5rem; white-space: normal; }
-
-tbody tr:last-child td { border-bottom: 0; }
-tbody tr:hover { background: var(--panel-2); }
-
-td.hi, th.hi { color: var(--ink); font-weight: 700; }
-tr.me { background: rgba(245, 179, 1, .07); }
-tr.me td.wide { color: var(--gold); font-weight: 600; }
-
-/* Names in a stats table are links, but a column of gold underlines reads as
-   decoration rather than data. Keep them quiet until hovered. */
-td a {
-	color: inherit;
-	text-decoration: none;
+	padding: .75rem 0;
 	border-bottom: 1px solid var(--line);
 }
 
-td a:hover { color: var(--gold); border-bottom-color: currentColor; }
+.fixtures li:first-child { padding-top: 0; }
+.fixtures li:last-child { padding-bottom: 0; border-bottom: 0; }
 
-.res { font-weight: 700; }
-.res.w { color: var(--win); }
-.res.l { color: var(--loss); }
-.tag { color: var(--muted); font-size: .75rem; }
+.fixtures .when, .fixtures .what { display: flex; flex-direction: column; min-width: 0; }
+.fixtures .when { flex: none; width: 7rem; }
+.fixtures .day, .fixtures .opp { font-weight: 600; }
+.fixtures .time, .fixtures .where { font-size: .85rem; color: var(--muted); }
+.fixtures .ha { color: var(--muted); font-weight: 500; }
 
 /* ---------- links ---------- */
 
@@ -626,11 +408,6 @@ footer p { margin: .25rem 0; }
 @media (prefers-reduced-motion: reduce) {
 	* { transition: none !important; }
 }
-
-/* Players the league's division view does not list — shown for completeness, but
-   their numbers are genuinely absent rather than zero. */
-tr.quiet td { color: var(--muted); }
-tr.quiet td.wide a { color: var(--muted); }
 
 /* ---------- live GameSheet embeds ---------- */
 
