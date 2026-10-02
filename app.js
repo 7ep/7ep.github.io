@@ -207,15 +207,18 @@
 	 * is always visible rather than shown only on failure.
 	 */
 	pages.live = function () {
+		// Same order as the tabs on GameSheet's own team page (Overview, Roster, Stats,
+		// Schedule, Standings), so the two feel alike. The first one is also the default.
 		var views = [
-			{ key: "schedule", label: "Schedule", url: gsTeam + "/schedule" },
-			{ key: "standings", label: "Standings", url: gsTeam + "/standings" },
-			{ key: "roster", label: "Roster", url: gsTeam + "/roster" },
 			{ key: "overview", label: "Overview", url: gsTeam },
-			// GameSheet has no per-team stats address (it 404s), so these open the league pages
-			// pre-filtered to our division. The filter can still be changed inside the frame.
+			{ key: "roster", label: "Roster", url: gsTeam + "/roster" },
+			// GameSheet's team Stats tab has no address of its own (it 404s), so the league pages
+			// stand in for it, pre-filtered to our division. The filter can still be changed
+			// inside the frame.
 			{ key: "scoring", label: "League scoring", url: gsSeason + "/players" + gsDivision, note: GAMESHEET.divisionName },
-			{ key: "goalies", label: "League goalies", url: gsSeason + "/goalies" + gsDivision, note: GAMESHEET.divisionName }
+			{ key: "goalies", label: "League goalies", url: gsSeason + "/goalies" + gsDivision, note: GAMESHEET.divisionName },
+			{ key: "schedule", label: "Schedule", url: gsTeam + "/schedule" },
+			{ key: "standings", label: "Standings", url: gsTeam + "/standings" }
 		];
 
 		var frame = document.createElement("iframe");
