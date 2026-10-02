@@ -16,7 +16,7 @@
 	 * The division id appears after picking the division on GameSheet's Players page:
 	 *   https://gamesheetstats.com/seasons/<season>/players?filter[division]=<division>
 	 */
-	var GAMESHEET = { season: 15835, team: 553606, division: 86203, divisionName: "D3 League" };
+	var GAMESHEET = { season: 15835, team: 553606, division: 86203 };
 
 	/* DaySmart is looked up by team name instead, so a new season needs no edit. */
 	var DAYSMART = {
@@ -163,9 +163,8 @@
 			$$("[data-dash-team]").forEach(function (a) { a.href = DAYSMART.site + "/teams/" + dashTeam; });
 
 			if (!ahead.length) {
-				next.innerHTML = '<p class="loading">No upcoming games are posted yet. ' +
-					'Past results are on the <a href="live.html">GameSheet</a> page.</p>';
-				list.innerHTML = '<p class="loading">Nothing scheduled yet &mdash; games appear here as soon as the rink posts them.</p>';
+				next.innerHTML = '<p class="loading">No upcoming games scheduled.</p>';
+				list.closest(".section").hidden = true;
 				return;
 			}
 
@@ -192,11 +191,10 @@
 						esc(x.opponent) + "</span>" +
 						'<span class="where">' + esc(x.rink) + "</span></div></li>";
 				}).join("") + "</ul>"
-				: '<p class="loading">No other games posted yet &mdash; they appear here as soon as the rink posts them.</p>';
+				: '<p class="loading">No other games scheduled yet.</p>';
 		}).catch(function () {
-			next.innerHTML = '<p class="loading">Could not reach the rink&rsquo;s schedule just now. ' +
-				'The <a href="live.html">GameSheet</a> page has the full schedule.</p>';
-			list.innerHTML = "";
+			next.innerHTML = '<p class="loading">Couldn&rsquo;t load the schedule. Try the <a href="live.html">GameSheet</a> page.</p>';
+			list.closest(".section").hidden = true;
 		});
 	};
 
@@ -215,8 +213,8 @@
 			// GameSheet's team Stats tab has no address of its own (it 404s), so the league pages
 			// stand in for it, pre-filtered to our division. The filter can still be changed
 			// inside the frame.
-			{ key: "scoring", label: "League scoring", url: gsSeason + "/players" + gsDivision, note: GAMESHEET.divisionName },
-			{ key: "goalies", label: "League goalies", url: gsSeason + "/goalies" + gsDivision, note: GAMESHEET.divisionName },
+			{ key: "scoring", label: "League scoring", url: gsSeason + "/players" + gsDivision },
+			{ key: "goalies", label: "League goalies", url: gsSeason + "/goalies" + gsDivision },
 			{ key: "schedule", label: "Schedule", url: gsTeam + "/schedule" },
 			{ key: "standings", label: "Standings", url: gsTeam + "/standings" }
 		];
@@ -230,7 +228,6 @@
 			frame.src = v.url;
 			frame.title = "GameSheet: " + v.label;
 			$("#live-open").href = v.url;
-			$("#live-caption").textContent = "Live from GameSheet · " + v.label + (v.note ? " · " + v.note : "");
 			$$("#live-tabs .chip").forEach(function (b) {
 				var on = b.dataset.view === v.key;
 				b.classList.toggle("on", on);

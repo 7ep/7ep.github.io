@@ -199,13 +199,6 @@ main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
 
 .loading { color: var(--muted); margin: 0; }
 
-.fineprint {
-	font-size: .75rem;
-	color: var(--muted);
-	margin: .9rem 0 0;
-	line-height: 1.5;
-}
-
 /* ---------- game module ---------- */
 
 .game-card { text-align: center; }
@@ -414,12 +407,12 @@ footer p { margin: .25rem 0; }
 #live-tabs { margin-bottom: 1rem; }
 
 /* The frame is someone else's page, so the card gives up its padding and just
-   provides the border, the caption bar, and a working link out. */
+   provides the border and a bar with a working link out. */
 .live-card { padding: 0; overflow: hidden; }
 
 .live-bar {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	gap: .5rem 1rem;
 	flex-wrap: wrap;
