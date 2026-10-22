@@ -1,0 +1,436 @@
+:root {
+	--bg: #0b1017;
+	--panel: #141b25;
+	--panel-2: #1b2431;
+	--line: #26313f;
+	--ink: #e8edf4;
+	--muted: #93a1b3;
+	--gold: #f5b301;
+	--radius: 14px;
+	--wrap: 1100px;
+	--sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font-family: var(--sans);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold); }
+
+:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+h1, h2 { line-height: 1.15; margin: 0; }
+
+/* ---------- hero ---------- */
+
+.hero {
+	position: relative;
+	padding: clamp(3rem, 12vw, 7rem) 1.25rem clamp(2rem, 6vw, 3.5rem);
+	background-image: linear-gradient(180deg, rgba(11, 16, 23, .55) 0%, rgba(11, 16, 23, .8) 55%, var(--bg) 100%), url("bobby_orr_flying_goal.jpg");
+	background-image: linear-gradient(180deg, rgba(11, 16, 23, .55) 0%, rgba(11, 16, 23, .8) 55%, var(--bg) 100%),
+		image-set(url("bobby_orr_flying_goal.webp") type("image/webp"), url("bobby_orr_flying_goal.jpg") type("image/jpeg"));
+	background-size: cover;
+	background-position: center 30%;
+	text-align: center;
+}
+
+.hero-inner { max-width: var(--wrap); margin: 0 auto; }
+
+.kicker {
+	margin: 0 0 .75rem;
+	font-size: .78rem;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--gold);
+	font-weight: 600;
+}
+
+.hero h1 {
+	font-size: clamp(3rem, 13vw, 6.5rem);
+	font-weight: 800;
+	letter-spacing: -.03em;
+	text-transform: uppercase;
+	text-shadow: 0 4px 30px rgba(0, 0, 0, .6);
+}
+
+.hero h1 span { color: var(--gold); }
+
+.tagline {
+	margin: .5rem 0 0;
+	color: var(--muted);
+	letter-spacing: .04em;
+}
+
+/* ---------- site nav ---------- */
+
+.skip {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	z-index: 100;
+	padding: .6rem 1rem;
+	background: var(--gold);
+	color: var(--bg);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.skip:focus { left: 0; }
+
+.nav {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+	padding: .7rem clamp(1rem, 4vw, 2rem);
+	background: rgba(11, 16, 23, .92);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--line);
+}
+
+.brand {
+	font-weight: 800;
+	font-size: 1.15rem;
+	letter-spacing: -.02em;
+	text-transform: uppercase;
+	color: var(--ink);
+	text-decoration: none;
+	margin-right: auto;
+}
+
+.brand span { color: var(--gold); }
+
+.nav-links { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+/* Tabs rather than quiet text links: an outline and full-strength text make the other
+   pages read as clickable at a glance, not just the gold one you are already on. */
+.nav-links a {
+	padding: .45rem 1.05rem;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	background: var(--panel);
+	color: var(--ink);
+	text-decoration: none;
+	font-size: .95rem;
+	font-weight: 700;
+	white-space: nowrap;
+	transition: background-color .15s, border-color .15s, color .15s;
+}
+
+.nav-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+.nav-links a.active { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+
+@media (max-width: 640px) {
+	/* Three tabs fit on a phone, so they stay in view as a full-width bar under the
+	   team name instead of hiding behind a menu button. */
+	.nav-links { width: 100%; gap: .35rem; }
+	.nav-links a { flex: 1; text-align: center; padding: .6rem .4rem; }
+}
+
+/* ---------- page headers ---------- */
+
+.page-head {
+	max-width: var(--wrap);
+	margin: 0 auto;
+	padding: clamp(1.75rem, 5vw, 2.5rem) 1.25rem 0;
+}
+
+.page-head h1 {
+	font-size: clamp(2rem, 7vw, 3.2rem);
+	font-weight: 800;
+	letter-spacing: -.03em;
+	text-transform: uppercase;
+}
+
+.page-sub {
+	margin: .5rem 0 0;
+	color: var(--muted);
+	font-size: .9rem;
+	letter-spacing: .04em;
+}
+
+/* ---------- layout ---------- */
+
+main {
+	max-width: var(--wrap);
+	margin: 0 auto;
+	padding: 0 1.25rem 3.5rem;
+}
+
+.section { margin-top: clamp(2rem, 5vw, 3rem); }
+
+/* The first block belongs to the page title above it, so it sits closer than the
+   gap that separates one section from the next. */
+main > section:first-of-type { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
+
+.section-title {
+	font-size: .8rem;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	color: var(--muted);
+	padding-bottom: .6rem;
+	margin-bottom: 1.1rem;
+	border-bottom: 1px solid var(--line);
+}
+
+.card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.card + .card { margin-top: 1rem; }
+
+.loading { color: var(--muted); margin: 0; }
+
+/* ---------- game module ---------- */
+
+.game-card { text-align: center; }
+
+.badge {
+	display: inline-block;
+	padding: .2rem .7rem;
+	border-radius: 999px;
+	background: var(--panel-2);
+	border: 1px solid var(--line);
+	font-size: .7rem;
+	letter-spacing: .13em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--muted);
+}
+
+.badge.gold { background: rgba(245, 179, 1, .12); border-color: rgba(245, 179, 1, .4); color: var(--gold); }
+
+.matchup {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: clamp(1rem, 5vw, 2.5rem);
+	margin: 1.4rem 0 .4rem;
+	flex-wrap: wrap;
+}
+
+.matchup .side {
+	font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+	font-weight: 700;
+	letter-spacing: -.01em;
+	max-width: 11ch;
+}
+
+.matchup .vs {
+	font-size: .8rem;
+	letter-spacing: .12em;
+	color: var(--muted);
+	text-transform: uppercase;
+}
+
+.game-meta { color: var(--muted); margin: .3rem 0 0; font-size: .95rem; }
+
+.countdown {
+	display: flex;
+	justify-content: center;
+	gap: clamp(.75rem, 3vw, 1.75rem);
+	margin: 1.6rem 0 .25rem;
+}
+
+.countdown > div {
+	background: var(--panel-2);
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	padding: .7rem clamp(.6rem, 2.5vw, 1.1rem);
+	min-width: 4.2rem;
+}
+
+.countdown .n {
+	display: block;
+	font-size: clamp(1.5rem, 6vw, 2.2rem);
+	font-weight: 800;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.1;
+}
+
+.countdown .u {
+	display: block;
+	font-size: .65rem;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.btn-link {
+	display: inline-block;
+	margin-top: .3rem;
+	font-weight: 600;
+	font-size: .9rem;
+	text-decoration: none;
+	border-bottom: 1px solid currentColor;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+.chip {
+	appearance: none;
+	font: inherit;
+	font-size: .85rem;
+	font-weight: 600;
+	cursor: pointer;
+	color: var(--ink);
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	padding: .45rem 1rem;
+}
+
+.chip:hover { background: var(--panel-2); border-color: var(--gold); }
+
+.chip.on { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+
+/* ---------- coming up ---------- */
+
+/* A list rather than a table: day and time stack in a narrow column, so each row
+   fits a phone screen instead of scrolling sideways. */
+.fixtures { list-style: none; margin: 0; padding: 0; }
+
+.fixtures li {
+	display: flex;
+	gap: 1rem;
+	padding: .75rem 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.fixtures li:first-child { padding-top: 0; }
+.fixtures li:last-child { padding-bottom: 0; border-bottom: 0; }
+
+.fixtures .when, .fixtures .what { display: flex; flex-direction: column; min-width: 0; }
+.fixtures .when { flex: none; width: 7rem; }
+.fixtures .day, .fixtures .opp { font-weight: 600; }
+.fixtures .time, .fixtures .where { font-size: .85rem; color: var(--muted); }
+.fixtures .ha { color: var(--muted); font-weight: 500; }
+
+/* ---------- links ---------- */
+
+.links {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 1rem;
+}
+
+.link-card {
+	display: flex;
+	flex-direction: column;
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	overflow: hidden;
+	text-decoration: none;
+	color: var(--ink);
+	transition: transform .15s ease, border-color .15s ease;
+}
+
+.link-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+
+.link-card img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+	display: block;
+	border-bottom: 1px solid var(--line);
+}
+
+.link-card span {
+	padding: .75rem .9rem;
+	font-weight: 600;
+	font-size: .92rem;
+}
+
+/* ---------- gallery ---------- */
+
+.gallery { display: grid; gap: 1.25rem; }
+
+.gallery figure {
+	margin: 0;
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	overflow: hidden;
+}
+
+.gallery img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.gallery figcaption {
+	padding: .7rem .95rem;
+	font-size: .85rem;
+	color: var(--muted);
+}
+
+.cup { margin-right: .3rem; }
+
+/* ---------- footer ---------- */
+
+footer {
+	border-top: 1px solid var(--line);
+	padding: 2rem 1.25rem 3rem;
+	text-align: center;
+	color: var(--muted);
+	font-size: .9rem;
+}
+
+footer p { margin: .25rem 0; }
+
+@media (prefers-reduced-motion: reduce) {
+	* { transition: none !important; }
+}
+
+/* ---------- live GameSheet embeds ---------- */
+
+#live-tabs { margin-bottom: 1rem; }
+
+/* The frame is someone else's page, so the card gives up its padding and just
+   provides the border and a bar with a working link out. */
+.live-card { padding: 0; overflow: hidden; }
+
+.live-bar {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: .5rem 1rem;
+	flex-wrap: wrap;
+	padding: .7rem 1rem;
+	border-bottom: 1px solid var(--line);
+	font-size: .85rem;
+	color: var(--muted);
+}
+
+.live-bar a { font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+/* A cross-origin frame cannot report its content height, so it gets a tall fixed
+   viewport and scrolls inside itself. */
+.live-frame iframe {
+	display: block;
+	width: 100%;
+	height: 78vh;
+	min-height: 560px;
+	border: 0;
+	background: var(--panel);
+}
